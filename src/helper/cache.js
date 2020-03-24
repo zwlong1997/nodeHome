@@ -14,20 +14,20 @@ function refreshRes(stats,res) {
         res.setHeader('Last-Modified',stats.mtime.toUTCString());
     }
 
-    if(etag){
-        res.setHeader('ETag',`${stats.size}-${stats.mtime}`);
-    }
+    // if(etag){
+    //     res.setHeader('ETag',`${stats.size}-${stats.mtime}`);
+    // }
 }
 
 
 
-module.exports = function isFresh(stats,req,res){
+module.exports = (stats,req,res) => {
     refreshRes(stats,res);
 
     const lastModified = req.headers['if-modified-since'];
-    const etag = req.headers['if-none-match'];
+    // const etag = req.headers['if-none-match'];
 
-    if(!lastModified && !etag){
+    if(!lastModified){
         return false;
     }
 
@@ -35,9 +35,9 @@ module.exports = function isFresh(stats,req,res){
         return false;
     }
 
-    if(etag && etag !== res.getHeader('ETag')){
-        return false;
-    }
+    // if(etag && etag !== res.getHeader('ETag')){
+    //     return false;
+    // }
 
     return true;
 }

@@ -1,8 +1,11 @@
 {
   "name": "nodehome",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.js",
+  "bin": { 
+    "nodehome": "src/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +21,7 @@
   "homepage": "https://github.com/zwlong1997/nodeHome#readme",
   "dependencies": {
     "chalk": "^3.0.0",
-    "handlebars": "^4.7.3"
+    "handlebars": "^4.7.3",
+    "yargs": "^15.3.1"
   }
 }
